@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Simple globe with iTowns</title>
+        <style>
+            html { height: 100%; }
+            body { margin: 0; overflow: hidden; height: 100%; }
+            #viewerDiv { margin: auto; height: 100%; width: 100%; padding: 0; }
+            canvas { display: block }
+        </style>
+     </head>
+     <body>
+        <div id="viewerDiv"></div>
+        <script src="js/itowns.js"></script>
+        <script type="text/javascript">
+            var viewerDiv = document.getElementById('viewerDiv');
+            var position = new itowns.Coordinates('WGS84', 2.35, 48.8, 1e3);
+            var view = new itowns.GlobeView(viewerDiv, position);
+
+            var colorLayer = new itowns.ColorLayer('Ortho', {
+                source: {
+                    protocol: 'wmts',
+                    url: 'http://wxs.ign.fr/3ht7xcw6f7nciopo16etuqp2/geoportail/wmts',
+                    name: 'ORTHOIMAGERY.ORTHOPHOTOS',
+                    tileMatrixSet: 'PM',
+                    format: 'image/jpeg'
+                }
+            });
+            view.addLayer(colorLayer);
+
+            var elevationLayer = new itowns.ElevationLayer('MNT_WORLD', {
+                source: {
+                    protocol: 'wmts',
+                    url: 'http://wxs.ign.fr/3ht7xcw6f7nciopo16etuqp2/geoportail/wmts',
+                    name: 'ELEVATION.ELEVATIONGRIDCOVERAGE.HIGHRES',
+                    tileMatrixSet: 'WGS84G',
+                    format: 'image/x-bil;bits=32',
+                    tileMatrixSetLimits: {
+                        11: {
+                            minTileRow: 442,
+                            maxTileRow: 1267,
+                            minTileCol: 1344,
+                            maxTileCol: 2683
+                        },
+                        12: {
+                            minTileRow: 885,
+                            maxTileRow: 2343,
+                            minTileCol: 3978,
+                            maxTileCol: 5126
+                        },
+                        13: {
+                            minTileRow: 1770,
+                            maxTileRow: 4687,
+                            minTileCol: 7957,
+                            maxTileCol: 10253
+                        },
+                        14: {
+                            minTileRow: 3540,
+                            maxTileRow: 9375,
+                            minTileCol: 15914,
+                            maxTileCol: 20507
+                        }
+                    }
+                }
+            });
+            view.addLayer(elevationLayer);
+        </script>
+     </body>
+</html>
