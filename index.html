@@ -12,46 +12,9 @@
   </style>
 </head>
 <body>
-  <div id="cesiumContainer"></div>
-
-  <script>
-
-// viewer: disable almost everything, enable explicit rendering
-var viewer = new Cesium.Viewer('cesiumContainer', {
-    geocoder: false
-    , baseLayerPicker: false
-    , sceneModePicker: false
-    , homeButton: false
-    , infoBox: false
-    , timeline: false
-    , animation: false
-    , scene3DOnly: true
-    , navigationInstructionsInitiallyVisible: false
-    , selectionIndicator: false
-    , imageryProvider: Cesium.createWorldImagery()
-    , terrainProvider: Cesium.createWorldTerrain()
-    , requestRenderMode : true
-});
-
-viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<a target="_blank" href="https://www.melown.com/">&copy;2018 Melown Technologies SE</a>'));
-
-var tileset = new Cesium.Cesium3DTileset({
-    url: "https://cdn.melown.com/3dtiles/melown/hannover-expo/tileset.json"
-    //url: "https://cdn.melown.com/3dtiles/melown/benatky-nad-jizerou/tileset.json"
-});
-
-tileset.readyPromise.then(function(tileset) {
-viewer.scene.primitives.add(tileset);
-    // look at the tileset
-    viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(-0.3, -0.8, tileset.boundingSphere.radius * 0.5));
-    console.log(tileset.maximumScreenSpaceError);
-    tileset.maximumScreenSpaceError = 2;
-}).otherwise(function(error) {
-    console.log(error);
-});
-
-  </script>
-
+  <div><a href="vts.html">VTS</a></div>
+  <div><a href="cesium.html">CesiumJS</a></div>
+  <div><a href="itowns.html">iTowns</a></div>
 </body>
 </html>
 
