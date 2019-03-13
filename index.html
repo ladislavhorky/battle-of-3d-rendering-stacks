@@ -43,6 +43,7 @@ tileset.readyPromise.then(function(tileset) {
 viewer.scene.primitives.add(tileset);
     // look at the tileset
     viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(-0.3, -0.8, tileset.boundingSphere.radius * 0.5));
+    console.log(tileset.maximumScreenSpaceError);
 }).otherwise(function(error) {
     console.log(error);
 });
