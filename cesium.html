@@ -84,13 +84,15 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
                 color : Cesium.Color.BLUE
             });*/
 
-            var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
-            for (var j = 0; j < positions.length; j++)
-            {
-                var pos = Cesium.Cartographic.fromCartesian(positions[j]);
-                positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 3);
+            if (entity.polyline) {
+                var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
+                for (var j = 0; j < positions.length; j++)
+                {
+                    var pos = Cesium.Cartographic.fromCartesian(positions[j]);
+                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 3);
+                }
+                entity.polyline.positions = positions;
             }
-            entity.polyline.positions = positions;
        }
 
        /* var colorHash = {};
