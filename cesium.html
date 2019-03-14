@@ -66,14 +66,34 @@ viewer.scene.primitives.add(tileset);
 });
 
 Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
-    	  clampToGround : true
-        , markerSize : 5
+    	 // clampToGround : true
+        //, markerSize : 5
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
 
         //Get the array of entities
         var entities = dataSource.entities.values;
+
+        for (var i = 0; i < entities.length; i++)
+        {
+            //Set the height and the material of each polyline
+            var entity = entities[i];
+			
+            entity.polyline.width = 10;
+            entity.polyline.material = new Cesium.PolylineGlowMaterialProperty({
+                glowPower : 0.2,
+                color : Cesium.Color.BLUE
+            });
+			
+            var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
+            for (var j = 0; j < positions.length; j++)
+            {
+                var pos = Cesium.Cartographic.fromCartesian(positions[j]);
+                positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 3);
+            }
+            entity.polyline.positions = positions;
+       }
 
        /* var colorHash = {};
         for (var i = 0; i < entities.length; i++) {
