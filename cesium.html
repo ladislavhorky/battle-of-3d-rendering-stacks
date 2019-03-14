@@ -65,10 +65,10 @@ viewer.scene.primitives.add(tileset);
     console.log(error);
 });
 
-Cesium.GeoJsonDataSource.load('parcels-cropped.json').then(function(dataSource) {
-	dataSource.clampToGround = true;
-        dataSource.markerSize = 5;
-
+Cesium.GeoJsonDataSource.load('parcels-cropped.json', {
+    	  clampToGround : true
+        , markerSize : 5
+    }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
 
