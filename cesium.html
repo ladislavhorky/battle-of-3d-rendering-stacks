@@ -78,11 +78,11 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
             //Set the height and the material of each polyline
             var entity = entities[i];
 
-            entity.polyline.width = 10;
+            /*entity.polyline.width = 10;
             entity.polyline.material = new Cesium.PolylineGlowMaterialProperty({
                 glowPower : 0.2,
                 color : Cesium.Color.BLUE
-            });
+            });*/
 
             var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
             for (var j = 0; j < positions.length; j++)
