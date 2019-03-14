@@ -11,18 +11,10 @@
             canvas { display: block }
         </style>
 
-        <!--link rel="stylesheet" type="text/css" href="css/example.css">
-        <link rel="stylesheet" type="text/css" href="css/loading_screen.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"-->
-        <!--script src="js/GUI/dat.gui/dat.gui.min.js"></script-->
     </head>
     <body>
         <div id="viewerDiv"></div>
-        <!--script src="js/GUI/GuiTools.js"></script-->
         <script src="https://www.itowns-project.org/itowns/dist/itowns.js"></script>
-        <!--script src="js/loading_screen.js"></script-->
-        <!--script src="../dist/debug.js"></script-->
-        <!--script src="js/3dTilesHelper.js"></script-->
         <script type="text/javascript">
             /* global itowns,document,GuiTools*/
             var positionOnGlobe = { longitude: -75.61, latitude: 40.04, altitude: 50000 }
@@ -31,22 +23,14 @@
 
             var view = new itowns.GlobeView(viewerDiv, positionOnGlobe);
             view.camera.camera3D.near = 5;
-            //setupLoadingScreen(viewerDiv, view);
-
-            //var menuGlobe = new GuiTools('menuDiv', view, 300);
-
-            /*itowns.Fetcher.json('./layers/JSONLayers/OPENSM.json').then(function _(config) {
-                config.source = new itowns.TMSSource(config.source);
-                var layer = new itowns.ColorLayer('Ortho', config);
-                view.addLayer(layer).then(menuGlobe.addLayerGUI.bind(menuGlobe));
-            });*/
 
             // Create a new Layer 3d-tiles For DiscreteLOD
             // -------------------------------------------
             var $3dTilesLayerDiscreteLOD = new itowns.GeometryLayer('3d-tiles-discrete-lod', new itowns.THREE.Group());
 
             $3dTilesLayerDiscreteLOD.name = 'DiscreteLOD';
-            $3dTilesLayerDiscreteLOD.url = 'https://raw.githubusercontent.com/AnalyticalGraphicsInc/3d-tiles-samples/master/tilesets/TilesetWithDiscreteLOD/tileset.json';
+            //$3dTilesLayerDiscreteLOD.url = 'https://raw.githubusercontent.com/AnalyticalGraphicsInc/3d-tiles-samples/master/tilesets/TilesetWithDiscreteLOD/tileset.json';
+            $3dTilesLayerDiscreteLOD.url = 'https://cdn.melown.com/3dtiles/melown/hannover-expo/tileset.json';
             $3dTilesLayerDiscreteLOD.protocol = '3d-tiles'
             $3dTilesLayerDiscreteLOD.overrideMaterials = true;  // custom cesium shaders are not functional
 
