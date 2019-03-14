@@ -16,6 +16,14 @@
 
   <script>
 
+var terrainProvider = new Cesium.CesiumTerrainProvider({
+    url: "http://condrieu:8070/mapproxy/tms-global-geodetic/surface/terrain/viewfinder3/"
+});
+
+var imageryProvider = new Cesium.UrlTemplateImageryProvider({
+    url: "http://condrieu:8070/mapproxy/tms-global-geodetic/tms/imagery/eox-it-sentinel2-cloudless/{lod}-{x}-{y}.jpg?r=1"
+});
+
 // viewer: disable almost everything, enable explicit rendering
 var viewer = new Cesium.Viewer('cesiumContainer', {
     geocoder: false
@@ -28,8 +36,8 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
     , scene3DOnly: true
     , navigationInstructionsInitiallyVisible: false
     , selectionIndicator: false
-    , imageryProvider: Cesium.createWorldImagery()
-    , terrainProvider: Cesium.createWorldTerrain()
+    , imageryProvider: imageryProvider
+    , terrainProvider: terrainProvider
     , requestRenderMode : true
 });
 
