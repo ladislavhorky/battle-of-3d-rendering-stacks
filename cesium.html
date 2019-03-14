@@ -50,8 +50,8 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
 viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<a target="_blank" href="https://www.melown.com/">&copy;2018 Melown Technologies SE</a>'));
 
 var tileset = new Cesium.Cesium3DTileset({
-    url: "https://cdn.melown.com/3dtiles/melown/hannover-expo/tileset.json"
-    //url: "https://cdn.melown.com/3dtiles/melown/benatky-nad-jizerou/tileset.json"
+    //url: "https://cdn.melown.com/3dtiles/melown/hannover-expo/tileset.json"
+    url: "https://cdn.melown.com/3dtiles/melown/benatky-nad-jizerou/tileset.json"
 });
 
 tileset.readyPromise.then(function(tileset) {
