@@ -89,7 +89,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
                 for (var j = 0; j < positions.length; j++)
                 {
                     var pos = Cesium.Cartographic.fromCartesian(positions[j]);
-                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 3);
+                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 600);
                 }
                 entity.polyline.positions = positions;
             }
