@@ -64,7 +64,7 @@ viewer.scene.primitives.add(tileset);
 
 
 Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
-    	 // clampToGround : true
+    	 clampToGround : true
         //, markerSize : 5
     }).then(function(dataSource) {
 
@@ -89,7 +89,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
                 for (var j = 0; j < positions.length; j++)
                 {
                     var pos = Cesium.Cartographic.fromCartesian(positions[j]);
-                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 600);
+                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height + 10);
                 }
                 entity.polyline.positions = positions;
             }
