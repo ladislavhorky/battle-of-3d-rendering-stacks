@@ -65,8 +65,11 @@ viewer.scene.primitives.add(tileset);
     console.log(error);
 });
 
-var promise = Cesium.GeoJsonDataSource.load('parcels-cropped.json');
-    promise.then(function(dataSource) {
+Cesium.GeoJsonDataSource.load('parcels-cropped.json').then(function(dataSource) {
+	dataSource.clampToGround = true;
+        dataSource.markerSize = 5;
+
+
         viewer.dataSources.add(dataSource);
 
         //Get the array of entities
