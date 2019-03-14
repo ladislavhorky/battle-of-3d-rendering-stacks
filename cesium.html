@@ -61,9 +61,7 @@ viewer.scene.primitives.add(tileset);
     viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(-0.3, -0.8, tileset.boundingSphere.radius * 0.5));
     console.log(tileset.maximumScreenSpaceError);
     //tileset.maximumScreenSpaceError = 2;
-}).otherwise(function(error) {
-    console.log(error);
-});
+
 
 Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
     	 // clampToGround : true
@@ -79,13 +77,13 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
         {
             //Set the height and the material of each polyline
             var entity = entities[i];
-			
+
             entity.polyline.width = 10;
             entity.polyline.material = new Cesium.PolylineGlowMaterialProperty({
                 glowPower : 0.2,
                 color : Cesium.Color.BLUE
             });
-			
+
             var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
             for (var j = 0; j < positions.length; j++)
             {
@@ -124,6 +122,10 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
         //Display any errrors encountered while loading.
         window.alert(error);
     });
+
+}).otherwise(function(error) {
+    console.log(error);
+});
 
   </script>
 
