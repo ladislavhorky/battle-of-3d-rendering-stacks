@@ -63,9 +63,10 @@ viewer.scene.primitives.add(tileset);
     //tileset.maximumScreenSpaceError = 2;
 
 
-Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
+Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
     	// clampToGround : true
         markerSymbol : null
+        , stroke: Cesium.Color.WHITE
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
@@ -82,7 +83,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
                 entity.label = {
                     text: entity.properties["TEXT_KM"],
                     font: "12px Helvetica",
-                    fillColor: Cesium.Color.WHITE, // tried several colors/styles but no luck
+                    fillColor: Cesium.Color.YELLOW, // tried several colors/styles but no luck
                     outlineColor: Cesium.Color.BLACK,
                     outlineWidth: 4,
                     style: Cesium.LabelStyle.FILL_AND_OUTLINE
@@ -91,7 +92,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
 
                 var pos = Cesium.Cartographic.fromCartesian(entity.position.getValue(viewer.clock.currentTime));
                 entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
-                entity.label.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 200);
+                entity.label.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 400);
                 entity.billboard = null;
             }
 
