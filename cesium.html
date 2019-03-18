@@ -63,9 +63,9 @@ viewer.scene.primitives.add(tileset);
     //tileset.maximumScreenSpaceError = 2;
 
 
-Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
-    	 clampToGround : true
-        , markerSymbol : ''
+Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
+    	// clampToGround : true
+        markerSymbol : ''
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
