@@ -88,7 +88,7 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
                     outlineWidth: 4,
                     style: Cesium.LabelStyle.FILL_AND_OUTLINE
                 }
-                console.log("displaying label:" + entity.properties["TEXT_KM"]);
+                //console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
                 var pos = Cesium.Cartographic.fromCartesian(entity.position.getValue(viewer.clock.currentTime));
                 entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+1);
@@ -108,12 +108,16 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
                 switch (entity.properties["KU_ID"]) {
                     case 602108:
                         entity.polyline.material = Cesium.Color.BURLYWOOD;
+                        console.log("color to burlywood")
                         break;
                     case 602116:
                         entity.polyline.material = Cesium.Color.BEIGE;
+                        console.log("color to beige")
                         break;
                     case 602124:
                         entity.polyline.material = Cesium.Color.GREY;
+                        console.log("color to white")
+                        break;
                 }
             }
        }
