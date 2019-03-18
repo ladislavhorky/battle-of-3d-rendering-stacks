@@ -82,7 +82,7 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
             if(entity.position) {
                 entity.label = {
                     text: entity.properties["TEXT_KM"],
-                    font: "12px Helvetica",
+                    font: "14px Helvetica",
                     fillColor: Cesium.Color.YELLOW, // tried several colors/styles but no luck
                     outlineColor: Cesium.Color.BLACK,
                     outlineWidth: 4,
@@ -91,7 +91,7 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
                 console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
                 var pos = Cesium.Cartographic.fromCartesian(entity.position.getValue(viewer.clock.currentTime));
-                entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
+                entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+1);
                 entity.label.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 400);
                 entity.billboard = null;
             }
@@ -101,9 +101,20 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
                 for (var j = 0; j < positions.length; j++)
                 {
                     var pos = Cesium.Cartographic.fromCartesian(positions[j]);
-                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
+                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+1);
                 }
                 entity.polyline.positions = positions;
+
+                switch (entity.properties["KU_ID"]) {
+                    case 602108:
+                        entity.stroke = Cesium.Color.BURLYWOOD;
+                        break;
+                    case 602116:
+                        entity.stroke = Cesium.Color.BEIGE;
+                        break;
+                    case 602124:
+                        entity.stroke = Cesium.Color.GREY;
+                }
             }
        }
 
