@@ -89,8 +89,8 @@ Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
                 }
                 console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
-                var pos = Cesium.Cartographic.fromCartesian(entity.position["value"]);
-                entity.position["value"] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
+                var pos = Cesium.Cartographic.fromCartesian(entity.position.getValue(viewer.clock.currentTime));
+                entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
             }
 
             if (entity.polyline) {
