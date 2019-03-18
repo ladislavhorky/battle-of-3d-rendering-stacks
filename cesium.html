@@ -94,7 +94,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
                 entity.polyline.positions = positions;
             }*/
 
-            if(entity.point) {
+            if(entity.position) {
                 entity.label = {
                     text: entity.properties["TEXT_KM"],
                     font: "12px Helvetica",
