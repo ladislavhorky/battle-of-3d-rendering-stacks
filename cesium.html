@@ -91,7 +91,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
 
                 var pos = Cesium.Cartographic.fromCartesian(entity.position.getValue(viewer.clock.currentTime));
                 entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
-                entity.label.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 20.0);
+                entity.label.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(10.0, 200);
                 entity.billboard = null;
             }
 
