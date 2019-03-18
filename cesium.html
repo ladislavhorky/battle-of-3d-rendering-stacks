@@ -84,15 +84,15 @@ Cesium.GeoJsonDataSource.load('parcels-namesti-heightcoded.json', {
                 color : Cesium.Color.BLUE
             });*/
 
-            /*if (entity.polyline) {
+            if (entity.polyline) {
                 var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
                 for (var j = 0; j < positions.length; j++)
                 {
                     var pos = Cesium.Cartographic.fromCartesian(positions[j]);
-                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+10);
+                    positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+46);
                 }
                 entity.polyline.positions = positions;
-            }*/
+            }
 
             if(entity.position) {
                 entity.label = {
