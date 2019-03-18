@@ -105,7 +105,7 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
                 }
                 entity.polyline.positions = positions;
 
-                switch (entity.properties["KU_ID"]) {
+                switch (entity.properties["KU_ID"].getValue()) {
                     case 602108:
                         entity.polyline.material = Cesium.Color.BURLYWOOD;
                         console.log("color to burlywood")
