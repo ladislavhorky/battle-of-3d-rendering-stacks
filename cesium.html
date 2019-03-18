@@ -84,7 +84,7 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
                 color : Cesium.Color.BLUE
             });*/
 
-            if (entity.polyline) {
+            /*if (entity.polyline) {
                 var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
                 for (var j = 0; j < positions.length; j++)
                 {
@@ -92,8 +92,21 @@ Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
                     positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+10);
                 }
                 entity.polyline.positions = positions;
+            }*/
+
+            if(entity.point) {
+                entity.label = {
+                    text: entity.properties["TEXT_KM"],
+                    font: "12px Helvetica",
+                    fillColor: Cesium.Color.WHITE, // tried several colors/styles but no luck
+                    outlineColor: Cesium.Color.BLACK,
+                    outlineWidth: 4,
+                    style: Cesium.LabelStyle.FILL_AND_OUTLINE
+                }
             }
        }
+
+
 
        /* var colorHash = {};
         for (var i = 0; i < entities.length; i++) {
