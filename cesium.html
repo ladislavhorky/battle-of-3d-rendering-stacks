@@ -107,13 +107,13 @@ Cesium.GeoJsonDataSource.load('parcels-city-heightcoded.json', {
 
                 switch (entity.properties["KU_ID"]) {
                     case 602108:
-                        entity.stroke = Cesium.Color.BURLYWOOD;
+                        entity.polyline.material = Cesium.Color.BURLYWOOD;
                         break;
                     case 602116:
-                        entity.stroke = Cesium.Color.BEIGE;
+                        entity.polyline.material = Cesium.Color.BEIGE;
                         break;
                     case 602124:
-                        entity.stroke = Cesium.Color.GREY;
+                        entity.polyline.material = Cesium.Color.GREY;
                 }
             }
        }
