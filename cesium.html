@@ -65,7 +65,7 @@ viewer.scene.primitives.add(tileset);
 
 Cesium.GeoJsonDataSource.load('parcels-namesti.json', {
     	 clampToGround : true
-        //, markerSize : 5
+        , markerSymbol : ''
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
