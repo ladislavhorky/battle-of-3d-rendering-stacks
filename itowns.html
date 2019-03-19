@@ -40,7 +40,7 @@
 
             view.addLayer(orthoLayer);
 
-            itowns.Fetcher.json('examples/layers/JSONLayers/WORLD_DTM.json')
+            itowns.Fetcher.json('https://www.itowns-project.org/itowns/examples/layers/JSONLayers/WORLD_DTM.json')
                 .then((config) => {
                     config.source = new itowns.WMTSSource(config.source);
                     var layer = new itowns.ElevationLayer(config.id, config);
