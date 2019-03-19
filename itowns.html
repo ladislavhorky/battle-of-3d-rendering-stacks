@@ -29,7 +29,7 @@
             var orthoSource = new itowns.TMSSource({
                 url: 'https://mapserver.mapy.cz/bing/${z}-${x}-${y}',
                 name: 'Mapy.cz Ortho',
-                isInverted: true, 
+                isInverted: true,
                 tileMatrixSet: 'PM',
                 format: 'image/jpeg',
             });
@@ -39,6 +39,13 @@
             });
 
             view.addLayer(orthoLayer);
+
+            itowns.Fetcher.json('examples/layers/JSONLayers/WORLD_DTM.json')
+                .then((config) => {
+                    config.source = new itowns.WMTSSource(config.source);
+                    var layer = new itowns.ElevationLayer(config.id, config);
+                    view.addLayer(layer);
+                });
 
             // Create a new Layer 3d-tiles For DiscreteLOD
             // -------------------------------------------
