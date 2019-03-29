@@ -87,8 +87,8 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
                     outlineColor: Cesium.Color.BLACK,
                     outlineWidth: 4,
                     style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-                    //disableDepthTestDistance: Number.POSITIVE_INFINITY,
-                    eyeOffset: new Cesium.Cartesian3(0, 0, -1000)
+                    disableDepthTestDistance: Number.POSITIVE_INFINITY
+                    //eyeOffset: new Cesium.Cartesian3(0, 0, -1000)
                 }
                 //console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
@@ -109,19 +109,19 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
 
                 switch (entity.properties["KU_ID"].getValue()) {
                     case 602108:
-                        entity.polyline.material = Cesium.Color.AQUAMARINE;
+                        entity.polyline.material = Cesium.Color.fromAlpha(Cesium.Color.AQUAMARINE, 0.5);
                         entity.polyline.depthFailMaterial = Cesium.Color.AQUAMARINE;
-                        console.log("color to burlywood")
+                        //console.log("color to burlywood")
                         break;
                     case 602116:
                         entity.polyline.material = Cesium.Color.DARKSALMON;
                         entity.polyline.depthFailMaterial = Cesium.Color.DARKSALMON;
-                        console.log("color to beige")
+                        //console.log("color to beige")
                         break;
                     case 602124:
                         entity.polyline.material = Cesium.Color.ANTIQUEWHITE;
-                        entity.polyline.depthFailMaterial = Cesium.Color.AQUAMARINE;
-                        console.log("color to white")
+                        entity.polyline.depthFailMaterial = Cesium.Color.ANTIQUEWHITE;
+                        //console.log("color to white")
                         break;
                 }
             }
