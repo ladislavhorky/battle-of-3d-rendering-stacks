@@ -86,7 +86,8 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
                     fillColor: Cesium.Color.YELLOW, // tried several colors/styles but no luck
                     outlineColor: Cesium.Color.BLACK,
                     outlineWidth: 4,
-                    style: Cesium.LabelStyle.FILL_AND_OUTLINE
+                    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+                    disableDepthTestDistance: Number.POSITIVE_INFINITY
                 }
                 //console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
@@ -108,14 +109,17 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
                 switch (entity.properties["KU_ID"].getValue()) {
                     case 602108:
                         entity.polyline.material = Cesium.Color.AQUAMARINE;
+                        entity.polyline.depthFailMaterial = Cesium.Color.AQUAMARINE;
                         console.log("color to burlywood")
                         break;
                     case 602116:
                         entity.polyline.material = Cesium.Color.DARKSALMON;
+                        entity.polyline.depthFailMaterial = Cesium.Color.DARKSALMON;
                         console.log("color to beige")
                         break;
                     case 602124:
                         entity.polyline.material = Cesium.Color.ANTIQUEWHITE;
+                        entity.polyline.depthFailMaterial = Cesium.Color.AQUAMARINE;
                         console.log("color to white")
                         break;
                 }
