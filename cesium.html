@@ -109,8 +109,10 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
 
                 switch (entity.properties["KU_ID"].getValue()) {
                     case 602108:
-                        entity.polyline.material = Cesium.Color.fromAlpha(Cesium.Color.AQUAMARINE, 0.1);
-                        entity.polyline.depthFailMaterial = Cesium.Color.AQUAMARINE;
+                        entity.polyline.material =
+                            Cesium.Color.fromAlpha(Cesium.Color.AQUAMARINE, 0.1);
+                        entity.polyline.depthFailMaterial =
+                            Cesium.Color.fromAlpha(Cesium.Color.AQUAMARINE, 0.1);
                         //console.log("color to burlywood")
                         break;
                     case 602116:
