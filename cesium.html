@@ -82,13 +82,13 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
             if(entity.position) {
                 entity.label = {
                     text: entity.properties["TEXT_KM"],
-                    font: "14px Helvetica",
+                    font: "15px Helvetica",
                     fillColor: Cesium.Color.YELLOW, // tried several colors/styles but no luck
                     outlineColor: Cesium.Color.BLACK,
                     outlineWidth: 4,
                     style: Cesium.LabelStyle.FILL_AND_OUTLINE,
                     disableDepthTestDistance: Number.POSITIVE_INFINITY,
-                    eyeOffset: new Cesium.Cartesian3(0, 0, -10)
+                    eyeOffset: new Cesium.Cartesian3(0, 0, -100)
                 }
                 //console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
