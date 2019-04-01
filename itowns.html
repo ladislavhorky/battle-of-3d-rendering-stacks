@@ -11,9 +11,36 @@
             canvas { display: block }
         </style>
 
+        <style type="text/css">
+            .tooltip {
+                display: none;
+                background-image: linear-gradient(rgba(80, 80, 80,0.95), rgba(60, 60, 60,0.95));
+                box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.5);
+                margin-top: 20px;
+                margin-left: 20px;
+                padding: 10px;
+                position: absolute;
+                z-index: 1000;
+                color: #CECECE;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+                line-height: 18px;
+                text-align: left;
+            }
+            .coord {
+                font-size: 12px;
+                padding-left:20px;
+                color: #93B7C0;
+                text-shadow: 0px 1px 0px rgba(200,200,200,.3), 0px -1px 0px rgba(30,30,30,.7);
+            }
+        </style>
+
     </head>
     <body>
-        <div id="viewerDiv"></div>
+        <div id="viewerDiv" class="viewer">
+            <span id="tooltipDiv" class="tooltip"></span>
+        </div>
+
         <script src="https://www.itowns-project.org/itowns/dist/itowns.js"></script>
         <script type="text/javascript">
             /* global itowns,document,GuiTools*/
@@ -63,6 +90,44 @@
             itowns.View.prototype.addLayer.call(view, $3dTilesLayerDiscreteLOD);
 
 
+            // geojson experiments
+            var promises = [];
+            // Convert by iTowns
+            promises.push(itowns.Fetcher.json('all-parcels-heightcoded.json')
+                .then(function _(geojson) {
+                    return itowns.GeoJsonParser.parse(geojson, {
+                        buildExtent: true,
+                        crsIn: 'EPSG:4326',
+                        crsOut: view.tileLayer.extent.crs,
+                        //mergeFeatures: true,
+                        withNormal: false,
+                        withAltitude: false,
+                    });
+                }).then(function _(parsedData) {
+                    var ariegeSource = new itowns.FileSource({
+                        parsedData,
+                    });
+
+                    var ariegeLayer = new itowns.ColorLayer('benatky', {
+                        name: 'benatky',
+                        transparent: true,
+                        style: {
+                            //fill: 'orange',
+                            //fillOpacity: 0.5,
+                            stroke: 'white'
+                        },
+                        source: ariegeSource,
+                    });
+
+                    return view.addLayer(ariegeLayer);
+                }));
+
+            // Listen for globe full initialisation event
+            view.addEventListener(itowns.VIEW_EVENTS.LAYERS_INITIALIZED, function _() {
+                Promise.all(promises).then(new ToolTip(view,
+                    document.getElementById('viewerDiv'),
+                    document.getElementById('tooltipDiv')));
+            });
 
          </script>
     </body>
