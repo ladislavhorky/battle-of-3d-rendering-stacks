@@ -67,18 +67,18 @@
 
             view.addLayer(orthoLayer);
 
-            itowns.Fetcher.json('https://www.itowns-project.org/itowns/examples/layers/JSONLayers/WORLD_DTM.json')
+            /*itowns.Fetcher.json('https://www.itowns-project.org/itowns/examples/layers/JSONLayers/WORLD_DTM.json')
                 .then((config) => {
                     config.source = new itowns.WMTSSource(config.source);
                     var layer = new itowns.ElevationLayer(config.id, config);
                     view.addLayer(layer);
-                });
+                });*/
 
             // Create a new Layer 3d-tiles For DiscreteLOD
             // -------------------------------------------
-            var $3dTilesLayerDiscreteLOD = new itowns.GeometryLayer('3d-tiles-discrete-lod', new itowns.THREE.Group());
+            /*var $3dTilesLayerDiscreteLOD = new itowns.GeometryLayer('3d-tiles-discrete-lod', new itowns.THREE.Group());
 
-            /*$3dTilesLayerDiscreteLOD.name = 'DiscreteLOD';
+            $3dTilesLayerDiscreteLOD.name = 'DiscreteLOD';
             $3dTilesLayerDiscreteLOD.url = 'https://cdn.melown.com/3dtiles/melown/helsinki/Helsinki3D_MESH_Kalasatama_2017_3D_Tiles/Kalasatama_Cesium.json';
             $3dTilesLayerDiscreteLOD.protocol = '3d-tiles'
             $3dTilesLayerDiscreteLOD.overrideMaterials = true;  // custom cesium shaders are not functional*/
