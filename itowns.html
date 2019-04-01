@@ -95,7 +95,7 @@
             // geojson experiments
             var promises = [];
             // Convert by iTowns
-            promises.push(itowns.Fetcher.json('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements/09-ariege/departement-09-ariege.geojson' //'parcels-namesti.json')
+            promises.push(itowns.Fetcher.json('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements/09-ariege/departement-09-ariege.geojson' )//'parcels-namesti.json')
                 .then(function _(geojson) {
                     return itowns.GeoJsonParser.parse(geojson, {
                         buildExtent: true,
