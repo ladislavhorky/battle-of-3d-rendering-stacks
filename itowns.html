@@ -136,32 +136,34 @@
             });*/
 
             var mvtSource = new itowns.TMSSource({
-                    // eslint-disable-next-line no-template-curly-in-string
-                    url: 'https://altair.mlwn.se/mvt/benatky-parcels-15/${z}/${x}/${y}.pbf',
-                    format: 'application/x-protobuf;type=mapbox-vector',
-                    attribution: {
-                        name: 'OpenStreetMap',
-                        url: 'http://www.openstreetmap.org/',
-                    },
-                    zoom: {
-                        min: 15,
-                        max: 15,
-                    },
-                    tileMatrixSet: 'PM',
-                    projection: 'EPSG:3857',
-                    isInverted: true,
-                });
+                // eslint-disable-next-line no-template-curly-in-string
+                url: 'https://altair.mlwn.se/mvt/benatky-parcels-15/${z}/${x}/${y}.pbf',
+                format: 'application/x-protobuf;type=mapbox-vector',
+                attribution: {
+                    name: 'OpenStreetMap',
+                    url: 'http://www.openstreetmap.org/',
+                },
+                zoom: {
+                    min: 15,
+                    max: 15,
+                },
+                tileMatrixSet: 'PM',
+                projection: 'EPSG:3857',
+                isInverted: true,
+            });
 
-                var mvtLayer = new itowns.ColorLayer('MVT', {
-                    //isValidData: isValidData,
-                    source: mvtSource,
-                    //fx: 2.5,
-                    style: {
-                        //fill: 'orange',
-                        //fillOpacity: 0.5,
-                        stroke: 'white'
-                    }
-                });
+            var mvtLayer = new itowns.ColorLayer('MVT', {
+                //isValidData: isValidData,
+                source: mvtSource,
+                //fx: 2.5,
+                style: {
+                    //fill: 'orange',
+                    //fillOpacity: 0.5,
+                    stroke: 'white'
+                }
+            });
+
+            return view.addLayer(mvtLayer);
 
          </script>
     </body>
