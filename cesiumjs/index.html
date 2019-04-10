@@ -67,7 +67,7 @@ viewer.scene.primitives.add(tileset);
 // parcels-modelonly-heightcoded.json
 Cesium.GeoJsonDataSource.load('parcels-modelonly-heightcoded.json',{//'all-parcels-heightcoded.json', {
         strokeWidth: 1.5
-        //, clampToGround: true
+        , clampToGround: true
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
@@ -101,7 +101,7 @@ Cesium.GeoJsonDataSource.load('parcels-modelonly-heightcoded.json',{//'all-parce
 
             if (entity.polyline) {
                 // clamp polyline to ground
-                //entity.polyline.classificationType = Cesium.ClassificationType.TERRAIN;
+                entity.polyline.classificationType = Cesium.ClassificationType.TERRAIN;
 
                 /*var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
                 for (var j = 0; j < positions.length; j++)
