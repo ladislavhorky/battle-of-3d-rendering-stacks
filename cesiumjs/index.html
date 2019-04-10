@@ -51,7 +51,6 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
 viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<a target="_blank" href="https://www.melown.com/">&copy;2018 Melown Technologies SE</a>'));
 
 var tileset = new Cesium.Cesium3DTileset({
-    //url: "https://cdn.melown.com/3dtiles/melown/hannover-expo/tileset.json"
     url: "https://cdn.melown.com/3dtiles/melown/benatky-nad-jizerou/tileset.json"
 });
 
@@ -65,10 +64,8 @@ viewer.scene.primitives.add(tileset);
 
 //viewer.resolutionScale = 0.5;
 
-Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
-    	// clampToGround : true
-        //markerSymbol : null
-        //, stroke: Cesium.Color.WHITE
+// parcels-modelonly-heightcoded.json
+Cesium.GeoJsonDataSource.load('parcels-modelonly-heightcoded.json',{//'all-parcels-heightcoded.json', {
         strokeWidth: 1.5
     }).then(function(dataSource) {
 
@@ -86,14 +83,12 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
                 entity.label = {
                     text: entity.properties["TEXT_KM"],
                     font: "15px Helvetica",
-                    fillColor: Cesium.Color.YELLOW, // tried several colors/styles but no luck
+                    fillColor: Cesium.Color.YELLOW,
                     outlineColor: Cesium.Color.BLACK,
                     outlineWidth: 4,
                     style: Cesium.LabelStyle.FILL_AND_OUTLINE,
                     disableDepthTestDistance: Number.POSITIVE_INFINITY
-                    //eyeOffset: new Cesium.Cartesian3(0, 0, -1000)
                 }
-                //console.log("displaying label:" + entity.properties["TEXT_KM"]);
 
                 var pos = Cesium.Cartographic.fromCartesian(entity.position.getValue(viewer.clock.currentTime));
                 entity.position = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+1);
@@ -118,21 +113,18 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
                             Cesium.Color.fromAlpha(Cesium.Color.AQUAMARINE, 0.5);
                         entity.polyline.depthFailMaterial =
                             Cesium.Color.fromAlpha(Cesium.Color.AQUAMARINE, 0.5);
-                        //console.log("color to burlywood")
                         break;
                     case 602116:
                         entity.polyline.material =
                             Cesium.Color.fromAlpha(Cesium.Color.DARKSALMON, 0.5);
                         entity.polyline.depthFailMaterial =
                             Cesium.Color.fromAlpha(Cesium.Color.DARKSALMON, 0.5);
-                        //console.log("color to beige")
                         break;
                     case 602124:
                         entity.polyline.material =
                             Cesium.Color.fromAlpha(Cesium.Color.ANTIQUEWHITE, 0.5);
                         entity.polyline.depthFailMaterial =
                             Cesium.Color.fromAlpha(Cesium.Color.ANTIQUEWHITE, 0.5);
-                        //console.log("color to white")
                         break;
                 }
             }
