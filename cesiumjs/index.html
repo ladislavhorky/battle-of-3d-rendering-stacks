@@ -67,6 +67,7 @@ viewer.scene.primitives.add(tileset);
 // parcels-modelonly-heightcoded.json
 Cesium.GeoJsonDataSource.load('parcels-modelonly-heightcoded.json',{//'all-parcels-heightcoded.json', {
         strokeWidth: 1.5
+        //, clampToGround: true
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
@@ -99,13 +100,16 @@ Cesium.GeoJsonDataSource.load('parcels-modelonly-heightcoded.json',{//'all-parce
             }
 
             if (entity.polyline) {
-                var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
+                // clamp polyline to ground
+                //entity.polyline.classificationType = Cesium.ClassificationType.TERRAIN;
+
+                /*var positions = entity.polyline.positions.getValue(viewer.clock.currentTime);
                 for (var j = 0; j < positions.length; j++)
                 {
                     var pos = Cesium.Cartographic.fromCartesian(positions[j]);
                     positions[j] = Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height+1);
                 }
-                entity.polyline.positions = positions;
+                entity.polyline.positions = positions;*/
 
                 switch (entity.properties["KU_ID"].getValue()) {
                     case 602108:
@@ -127,6 +131,9 @@ Cesium.GeoJsonDataSource.load('parcels-modelonly-heightcoded.json',{//'all-parce
                             Cesium.Color.fromAlpha(Cesium.Color.ANTIQUEWHITE, 0.5);
                         break;
                 }
+
+                // clamp polyline to ground
+                //entity.polyline.classificationType = Cesium.ClassificationType.TERRAIN;
             }
        }
 
