@@ -67,8 +67,9 @@ viewer.scene.primitives.add(tileset);
 
 Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
     	// clampToGround : true
-        markerSymbol : null
-        , stroke: Cesium.Color.WHITE
+        //markerSymbol : null
+        //, stroke: Cesium.Color.WHITE
+        strokeWidth: 2
     }).then(function(dataSource) {
 
         viewer.dataSources.add(dataSource);
@@ -87,7 +88,7 @@ Cesium.GeoJsonDataSource.load('all-parcels-heightcoded.json', {
                     font: "15px Helvetica",
                     fillColor: Cesium.Color.YELLOW, // tried several colors/styles but no luck
                     outlineColor: Cesium.Color.BLACK,
-                    outlineWidth: 3,
+                    outlineWidth: 4,
                     style: Cesium.LabelStyle.FILL_AND_OUTLINE,
                     disableDepthTestDistance: Number.POSITIVE_INFINITY
                     //eyeOffset: new Cesium.Cartesian3(0, 0, -1000)
