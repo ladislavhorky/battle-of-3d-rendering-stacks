@@ -29,6 +29,7 @@ var imageryProvider = new Cesium.UrlTemplateImageryProvider({
             return level + 1;
         }
     }
+    , credit: new Cesium.Credit('Datasurce: <a target="_blank" href="https://s2maps.eu">s2maps.eu</a> by EOX IT Services GmbH')
 });
 
 // viewer: disable almost everything, enable explicit rendering
@@ -48,7 +49,9 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
     , requestRenderMode : true
 });
 
-viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<a target="_blank" href="https://www.melown.com/">&copy;2018 Melown Technologies SE</a>'));
+viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<a target="_blank" href="https://www.melown.com/">&copy;2019 Melown Technologies SE</a>'));
+
+viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<a target="_blank" href="https://www.cuzk.cz/en">&copy;2019 ČÚZK</a>'));
 
 var tileset = new Cesium.Cesium3DTileset({
     url: "https://cdn.melown.com/3dtiles/melown/benatky-nad-jizerou/tileset.json"
