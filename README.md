@@ -115,4 +115,4 @@ Once VTS Mapproxy is updated, go to `http://localhost:8070/store/map-config/bena
 
 Please respect any license restrictions applicable to the data sources used
 in this demonstration. Respective copyright holders are clearly marked in the
-bottom-right area of the map window.
+bottom-right area of the map window in case of VTS Geospatial and in bottom-left area of the map window in case of CesiumJS.
