@@ -6,10 +6,12 @@ So far there are [VTS Geospatial](https://www.melown.com/products/vts-geospatial
 
 The comparison is based on a basic smart-city app containing:
 
-* global terrain based on [Viewfinder Panoramas 3 DEM](http://viewfinderpanoramas.org/)
+* global terrain based on [Viewfinder Panoramas 3 DEM](http://viewfinderpanoramas.org/dem3.html)
 * global [EOX IT Sentinel-2 Cloudless](https://s2maps.eu/) imagery
 * a [3D city model](https://www.melown.com/products/vadstena/) from low-altitude UAS imagery in 3D Tiles format
 * vector parcel information from Czech [State Administration of Land Surveying and Cadastre](https://www.cuzk.cz/en)
+
+This repository was created to accompany my talk "Battle of 3D Rendering Stacks" held at FOSS4G-NA 2019, San Diego, April 2019.
 
 ## Doing you own performance testing
 
@@ -19,22 +21,33 @@ The repo works as github pages, so you can easily tweak the code of the web appl
 2. Once forked, create one commit to force the github pages to build. (e.g. on GitHub click "edit" the README.md, add space and commit). GiHub pages are ready once a green tick appears next to your commit.
 3. Verify your github-pages are working by visiting `https://<your-username>.github.io/battle-of-3d-rendering-stacks`.
 
-This way you may fiddle with the frontend. If you want to add you own terrain, a 3D city model to further test your use-case, you may want to set up your own instance of VTS Backend - see below.
+This way you may experiment with the frontend. If you want to add you own terrain or a 3D city model to further test your use-case, you may want to set up your own instance of VTS Backend - see below.
 
 ## Setting up your own VTS Backend
 
 In case you want to further experiment with adding your own data or with the data provided for this example, here is how you can set up your own instance of VTS Backend and replicate configuration used in this example.
 
-### Install VTS Backend
+### Install VTS Backend and clone this repo
 
 You will need a recent Ubuntu LTS, all server components are then [installed through a single Debian package](http://vtsdocs.melown.com/en/latest/tutorials/vtsbackend.html#setting-vts-backend).
 
-### Fuse 3D city model with surrounding terrain
-
-Once you install VTS Backend, you can use the 3D city model and terrain from VTS Public Resources and fuse them together. Clone this repo as the `vts-backend` folder contains files you will need. Path to where your repo is denoted as `$VTS`. Do everything as `vts` user:
+Once you install VTS Backend, clone this repo into VTS user home directory: 
 
 ```bash
 $ # switch to VTS user
+$ suvts
+
+$ mkdir git
+$ git clone https://github.com/ladislavhorky/battle-of-3d-rendering-stacks.git
+
+```
+
+### Fuse 3D city model with surrounding terrain
+
+First, we shall use the terrain, imagery and a 3D city model provided for this example and fuse them together:
+
+```bash
+$ # switch to VTS user if you have not done so
 $ suvts
 
 $ # add terrain to storage to be merged with 3D city model we add later
@@ -49,7 +62,7 @@ $ vts --add store/stage.melown201 \
       --top
 
 $ # copy map-configuration from repo
-$ cp $VTS/vts-backend/benatky-parcels store/map-config/
+$ cp git/battle-of-3d-rendering-stacks/vts-backend/benatky-parcels store/map-config/
 ```
 
 Now you can go to `http://<yourserver>:8070/store/map-config/benatky-parcels` and you should see the 3D city model fused with the terrain.
