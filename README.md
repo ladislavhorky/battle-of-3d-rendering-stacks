@@ -42,9 +42,9 @@ $ git clone https://github.com/ladislavhorky/battle-of-3d-rendering-stacks.git
 
 ```
 
-### Fuse 3D city model with surrounding terrain
+### Fuse 3D city model with global terrain
 
-First, we shall use the terrain, imagery and a 3D city model provided for this example and fuse them together:
+First, we shall fuse the 3D model of Benátky nad Jizerou with Viewfinder Panoramas DEM-based terrain:
 
 ```bash
 $ # switch to VTS user if you have not done so
@@ -65,13 +65,13 @@ $ # copy map-configuration from repo
 $ cp git/battle-of-3d-rendering-stacks/vts-backend/benatky-parcels store/map-config/
 ```
 
-Now you can go to `http://<yourserver>:8070/store/map-config/benatky-parcels` and you should see the 3D city model fused with the terrain.
+Now you can go to `http://localhost:8070/store/map-config/benatky-parcels` and you should see the 3D city model fused with the terrain. If you are not running VTS Backend on `localhost`, change it to appropriate server name.
   
 ### Prepare parcel data
 
 First we need to set up the DEM for heightcoding the data:
 ```bash
-$ # do everything under VTS user
+$ # do everything under VTS user if you have not done so
 $ suvts
 
 $ # prepare DEM - can be then actually used as other terrain but we need it only for heightcoding
@@ -83,23 +83,23 @@ $ mapproxy-setup-resource --referenceFrame melown2015 \
                           --attribution "{copy}{Y} Melown Technologies SE"
 
 ```
-Now we can set up the parcels. We will create tiled geodata resource from provided MBTiles file. The MBTiles file were created from `all-parcels.json` by [tippecanoe](https://github.com/mapbox/tippecanoe) tool by following command (for reference):
+Now we can set up the parcels. We will create tiled geodata resource from provided MBTiles file. The MBTiles file were created from `all-parcels.json` with [tippecanoe](https://github.com/mapbox/tippecanoe) tool by following command (for reference):
 
 ```bash
 $ tippecanoe -o all-parcels-15-better-tileres.mbtiles -z 15 -Z 15 -B 15 -d 16 -D 16 -ps all-parcels.json
 ```
-To set the parcels up, we will simply copy resource files and configuration files to appropriate paths and then ping VTS Mapproxy register and start serving them.
+To set up the parcels, we will simply copy resource and configuration files to appropriate paths and then ping VTS Mapproxy to register them and start serving them.
 
 ```bash
-$ # do everything under VTS user
+$ # do everything under VTS user if you have not done so
 $ suvts
 
 $ # copy resource files
-$ cp $VTS/vts-backend/parcels.style mapproxy/datasets/battle-of-3d-stacks/
-$ cp $VTS/vts-backend/all-parcels-15-better-tileres.mbtiles mapproxy/datasets/battle-of-3d-stacks/
+$ cp git/battle-of-3d-rendering-stacks/vts-backend/parcels.style mapproxy/datasets/battle-of-3d-stacks/
+$ cp git/battle-of-3d-rendering-stacks/vts-backend/all-parcels-15-better-tileres.mbtiles mapproxy/datasets/battle-of-3d-stacks/
 
 $ # copy vts mapproxy resource config json
-$ cp $VTS/vts-backend/benatky-parcels.json /etc/vts/mapproxy/examples.d/
+$ cp git/battle-of-3d-rendering-stacks/vts-backend/benatky-parcels.json /etc/vts/mapproxy/examples.d/
 
 $ # tell vts mapproxy there are new resources
 $ /etc/init.d/vts-backend-mapproxy force-update
@@ -109,4 +109,4 @@ You can check the resource is ready in mapproxy log - look for lines beginning `
 ```
 $ tail /var/log/vts/mapproxy.log
 ```
-Once VTS Mapproxy is updated, go to `http://<yourserver>:8070/store/map-config/benatky-parcels` to see the result!
+Once VTS Mapproxy is updated, go to `http://localhost:8070/store/map-config/benatky-parcels` to see the result!
