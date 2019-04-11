@@ -47,7 +47,7 @@ $ # copy map-configuration from repo
 $ cp $VTS/vts-backend/benatky-parcels store/map-config/
 ```
 
-Now you can go to http://<yourserver>:8070/store/map-config/benatky-parcels and you should see the 3D city model fused with the terrain.
+Now you can go to `http://<yourserver>:8070/store/map-config/benatky-parcels` and you should see the 3D city model fused with the terrain.
   
 ### Prepare parcel data
 
@@ -91,4 +91,4 @@ You can check the resource is ready in mapproxy log - look for lines beginning `
 ```
 $ tail /var/log/vts/mapproxy.log
 ```
-Once VTS Mapproxy is updated, go to http://<yourserver>:8070/store/map-config/benatky-parcels to see the result!
+Once VTS Mapproxy is updated, go to `http://<yourserver>:8070/store/map-config/benatky-parcels` to see the result!
