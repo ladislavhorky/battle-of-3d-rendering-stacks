@@ -1,0 +1,39 @@
+[    
+    {
+        "group" : "battle-of-3d-stacks",
+        "id" : "parcels-mbtiles",
+        "comment" : "Tiles parcels with three cadastral areas.",
+        "driver" : "geodata-vector-tiled",
+        "definition" : {
+            "dataset" : "battle-of-3d-stacks/all-parcels-15-better-tileres.mbtiles/{loclod}-{locx}-{locy}",
+            "demDataset" : "battle-of-3d-stacks/benatky-nad-jizerou-dem",
+            "geoidGrid" : "egm96_15.gtx",
+            "displaySize" : 2048,
+            "format" : "geodataJson",
+	        "styleUrl" : "file:battle-of-3d-stacks/parcels.style",
+	        "formatConfig": {
+                "resolution": 16384
+            }
+        },
+        "type" : "geodata",
+        "referenceFrames": {
+            "melown2015" : {
+                "lodRange" : [ 16, 16 ],
+                    "tileRange" :
+                    [
+                        [ 17729, 11069 ],
+                        [ 17739, 11076 ]
+                    ]
+            }
+        },
+        "registry" : {
+            "credits": {
+                "cuzk": {
+                    "id": 1100,
+                    "notice": "{copy}{Y} ČÚZK"
+                }
+            }
+        },
+        "credits" : ["cuzk"]
+    }
+]

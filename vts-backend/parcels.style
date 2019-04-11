@@ -1,0 +1,22 @@
+{
+  "layers": {
+    "parcel-label": {
+      "label": true,
+      "label-size": 20,
+      "label-source": "$TEXT_KM",
+      "zbuffer-offset": [-11,-50,-50],
+      "visibility": 300,
+      "label-no-overlap" : false,
+      "label-color": [255,255,0,255]
+    },
+
+    "lines": {
+      "line-width": 0.002,
+      "line-width-units": "ratio",
+      "line-flat": true,
+      "line": true,
+      "line-color": {"discrete2" : ["$KU_ID", [[602108, [127, 255, 212, 128]], [602116, [233, 150, 122, 128]],[602124, [250, 235, 215, 128]]]] },
+      "zbuffer-offset": [-1,0,-50]
+    }
+  }
+}

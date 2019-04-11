@@ -1,0 +1,38 @@
+{
+        "storage": "../stage.melown2015",
+        "tilesets": [
+                "benatky-nad-jizerou", "terrain-viewfinder3"
+        ],
+        "credits": {
+        },
+        "boundLayers": {
+                "sentinel2-cloudless": "//cdn.melown.com/vts/melown2015/imagery/global/eox-it-sentinel2-cloudless/boundlayer.json"
+        },
+        "freeLayers": {
+                  "parcels-mbtiles" : "/mapproxy/melown2015/geodata/battle-of-3d-stacks/parcels-mbtiles/freelayer.json"
+                , "parcels-json" : "/mapproxy/melown2015/geodata/battle-of-3d-stacks/parcels-json/freelayer.json"
+        },
+        "stylesheets": {},
+        "view": {
+                "description": "",
+                "surfaces": {
+                        "terrain-viewfinder3": [
+                                "sentinel2-cloudless"
+                        ],
+                        "benatky-nad-jizerou" : []
+                },
+                "freeLayers": {
+		        "parcels-mbtiles" : {}
+                }
+        },
+        "namedViews": {},
+        "position": [
+            "obj",14.824827,50.290887,"fix",260.79,-17.52,-49.44,0.00,232.32,45.00
+        ],
+        "browserOptions": {
+                  "jumpAlowed": true
+                , "positionInUrl": true
+                , "indertia": [0, 0, 0.5]
+        },
+        "version": 1
+}
