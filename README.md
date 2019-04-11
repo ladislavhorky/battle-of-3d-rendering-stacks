@@ -23,3 +23,44 @@ In case you want to further experiment with adding your own data or with provide
 ### Install VTS Backend
 
 You will need a recent Ubuntu LTS, all server components are then [installed through a single Debian package](http://vtsdocs.melown.com/en/latest/tutorials/vtsbackend.html#setting-vts-backend).
+
+### Fuse 3D city model with surrounding terrain
+
+Once you install VTS Backend, you can use the 3D city model and terrain from VTS Public Resources and fuse them together. Clone this repo as the `vts-backend` folder contains files you will need. Path to where your repo is denoted as `$VTS`. Do everything as `vts` user:
+
+```bash
+$ # switch to VTS user
+$ suvts
+
+$ # add terrain to storage to be merged with 3D city model we add later
+$ vts --add store/stage.melown2015 \
+      --tileset "//cdn.melown.com/vts/melown2015/terrain/global/viewfinder3/" \
+      --bottom
+      
+$ # add 3D city model under id benatky-nad-jizerou, it will be fused with the terrain
+$ vts --add store/stage.melown201 \
+      --tileset "//cdn.melown.com/vts/melown2015/true3d/czech/benatky-nad-jizerou@2/" \
+      --tilesetId benatky-nad-jizerou \
+      --top
+
+$ # copy map-configuration from repo
+$ cp $VTS/vts-backend/benatky-parcels store/map-config/
+```
+
+Now you can go to http://<yourserver>:8070/store/map-config/benatky-parcels and you should see the 3D city model fused with the terrain.
+  
+### Prepare parcel data
+
+First we need to set up the DEM for heightcoding the data:
+```bash
+$ # do everything under VTS user
+$ suvts
+
+$ # prepare DEM - can be then actually used as other terrain but we need it only for heightcoding
+$ mapproxy-setup-resource --referenceFrame melown2015 \
+                          --id benatky-nad-jizerou-dem \
+                          --group battle-of-3d-stacks \
+                          --dataset $VTS/vts-backend/heightcoding-dem.tif
+                          --attribution
+                          
+```
