@@ -11,8 +11,6 @@ The comparison is based on a basic smart-city app containing:
 * a [3D city model](https://www.melown.com/products/vadstena/) from low-altitude UAS imagery in 3D Tiles format
 * vector parcel information from Czech [State Administration of Land Surveying and Cadastre](https://www.cuzk.cz/en)
 
-Using the same underlaying data (same meshes for terrain and 3D and the same imagery), it is possible to do a performance comparison of the 3D rendering stacks even though they are very dirrent feature-wise.
-
 ## Doing you own performance testing
 
 The repo works as github pages, so you can easily tweak the code of the web applications in `vts/index.html` and `cesiumjs/index.html` and see the effect live. To get the github pages working, do the following:
