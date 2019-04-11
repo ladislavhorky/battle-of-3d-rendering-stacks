@@ -25,7 +25,7 @@ This way you may fiddle with the frontend. If you want to add you own terrain, a
 
 ## Setting up your own VTS Backend
 
-In case you want to further experiment with adding your own data or with VTS Public Resources, here is how you can set your own instance of VTS Backend and replicate configuration used in this example.
+In case you want to further experiment with adding your own data or with the data provided for this example, here is how you can set up your own instance of VTS Backend and replicate configuration used in this example.
 
 ### Install VTS Backend
 
