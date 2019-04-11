@@ -61,6 +61,34 @@ $ mapproxy-setup-resource --referenceFrame melown2015 \
                           --id benatky-nad-jizerou-dem \
                           --group battle-of-3d-stacks \
                           --dataset $VTS/vts-backend/heightcoding-dem.tif
-                          --attribution
-                          
+                          --attribution "{copy}2005-16 Jonathan de Ferranti" \
+                          --attribution "{copy}{Y} Melown Technologies SE"
+
 ```
+Now we can set up the parcels. We will create tiled geodata resource from provided MBTiles file. The MBTiles file were created from `all-parcels.json` by [tippecanoe](https://github.com/mapbox/tippecanoe) tool by following command (for reference):
+
+```bash
+$ tippecanoe -o all-parcels-15-better-tileres.mbtiles -z 15 -Z 15 -B 15 -d 16 -D 16 -ps all-parcels.json
+```
+To set the parcels up, we will simply copy resource files and configuration files to appropriate paths and then ping VTS Mapproxy register and start serving them.
+
+```bash
+$ # do everything under VTS user
+$ suvts
+
+$ # copy resource files
+$ cp $VTS/vts-backend/parcels.style mapproxy/datasets/battle-of-3d-stacks/
+$ cp $VTS/vts-backend/all-parcels-15-better-tileres.mbtiles mapproxy/datasets/battle-of-3d-stacks/
+
+$ # copy vts mapproxy resource config json
+$ cp $VTS/vts-backend/benatky-parcels.json /etc/vts/mapproxy/examples.d/
+
+$ # tell vts mapproxy there are new resources
+$ /etc/init.d/vts-backend-mapproxy force-update
+```
+
+You can check the resource is ready in mapproxy log - look for lines beginning `Ready to serve <resource>`:
+```
+$ tail /var/log/vts/mapproxy.log
+```
+Once VTS Mapproxy is updated, go to http://<yourserver>:8070/store/map-config/benatky-parcels to see the result!
