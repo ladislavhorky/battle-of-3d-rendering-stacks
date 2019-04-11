@@ -1,24 +1,31 @@
 # Sandbox for comparing performance of VTS Geospatial and CesiumJS
 
-This repository serves as a sandbox for comparing performance of various 3D rendering stacks on the same or very similar data. 
-So far there is [VTS Geospatial](https://www.melown.com/products/vts-geospatial/) and [CesiumJS](https://cesiumjs.org/), iTowns are planned to be added once there is support for textured meshes in 3D Tiles.
+This repository serves as a sandbox for comparing performance of various 3D rendering stacks on the same or very similar data. The web page where you can compare 3D rendering stacks live is [here](https://ladislavhorky.github.io/battle-of-3d-rendering-stacks/).
 
-To jumpstart the comparison the repo contains github-pages with a simple smart-city-like web app containing:
+So far there are [VTS Geospatial](https://www.melown.com/products/vts-geospatial/) and [CesiumJS](https://cesiumjs.org/), iTowns are planned to be added once they support textured meshes in 3D Tiles.
+
+The comparison is based on a basic smart-city app containing:
 
 * global terrain based on [Viewfinder Panoramas 3 DEM](http://viewfinderpanoramas.org/)
 * global [EOX IT Sentinel-2 Cloudless](https://s2maps.eu/) imagery
 * a [3D city model](https://www.melown.com/products/vadstena/) from low-altitude UAS imagery in 3D Tiles format
 * vector parcel information from Czech [State Administration of Land Surveying and Cadastre](https://www.cuzk.cz/en)
 
-impemented both in VTS Geospatial and CesiumJS. Through the 3D rendering stacks are very different feature-wise, this setup using the same underlaying data allows for direct performace comparison. Feel free to fork the repo and tweak the example to match your use-case. Upon forking and creating one commit to trigger github pages build, the web wth comparison will be accessible at `<github username>.github.io/battle-of-3d-rendering-stacks/`.
+Using the same underlaying data (same meshes for terrain and 3D and the same imagery), it is possible to do a performance comparison of the 3D rendering stacks even though they are very dirrent feature-wise.
 
-If you want to play just with the frontend, the repo is practically self-contained. If you would like to play also with VTS Backend (add, replace, change some data), read the instructions below describing how the VTS Backend for this example was set up.
+## Doing you own performance testing
 
-The terrain, imagery and the 3D model are provided as VTS Public Resources, free for purposes of development and testing. See below.
+The repo works as github pages, so you can easily tweak the code of the web applications in `vts/index.html` and `cesiumjs/index.html` and see the effect live. To get the github pages working, do the following:
+
+1. fork the repo.
+2. Once forked, create one commit to force the github pages to build. (e.g. on GitHub click "edit" the README.md, add space and commit). GiHub pages are ready once a green tick appears next to your commit.
+3. Verify your github-pages are working by visiting `https://<your-username>.github.io/battle-of-3d-rendering-stacks`.
+
+This way you may fiddle with the frontend. If you want to add you own terrain, a 3D city model to further test your use-case, you may want to set up your own instance of VTS Backend - see below.
 
 ## Setting up your own VTS Backend
 
-In case you want to further experiment with adding your own data or with provided VTS Public Resources, here is how you can set your own instance of VTS Backend and replicate configuration used in this example.
+In case you want to further experiment with adding your own data or with VTS Public Resources, here is how you can set your own instance of VTS Backend and replicate configuration used in this example.
 
 ### Install VTS Backend
 
