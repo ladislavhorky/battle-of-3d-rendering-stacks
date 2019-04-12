@@ -83,7 +83,7 @@ $ mapproxy-setup-resource --referenceFrame melown2015 \
                           --attribution "{copy}{Y} Melown Technologies SE"
 
 ```
-Now we can set up the parcels. We will create tiled geodata resource from provided MBTiles file. The MBTiles file were created from `all-parcels.json` with [tippecanoe](https://github.com/mapbox/tippecanoe) tool by following command (for reference):
+Now we can set up the parcels. We will create tiled geodata resource from provided MBTiles file. The MBTiles file were created from `git/battle-of-3d-rendering-stacks/resources/all-parcels.json` with [tippecanoe](https://github.com/mapbox/tippecanoe) tool by following command (for reference):
 
 ```bash
 $ tippecanoe -o all-parcels-15-better-tileres.mbtiles -z 15 -Z 15 -B 15 -d 16 -D 16 -ps all-parcels.json
@@ -110,3 +110,9 @@ You can check the resource is ready in mapproxy log - look for lines beginning `
 $ tail /var/log/vts/mapproxy.log
 ```
 Once VTS Mapproxy is updated, go to `http://localhost:8070/store/map-config/benatky-parcels` to see the result!
+
+## Legal notice
+
+Please respect any license restrictions applicable to the data sources used
+in this demonstration. Respective copyright holders are clearly marked in the
+bottom-right area of the map window in case of VTS Geospatial and in bottom-left area of the map window in case of CesiumJS.
