@@ -56,7 +56,7 @@ $ vts --add store/stage.melown2015 \
       --bottom
       
 $ # add 3D city model under id benatky-nad-jizerou, it will be fused with the terrain
-$ vts --add store/stage.melown201 \
+$ vts --add store/stage.melown2015 \
       --tileset "//cdn.melown.com/vts/melown2015/true3d/czech/benatky-nad-jizerou@2/" \
       --tilesetId benatky-nad-jizerou \
       --top
