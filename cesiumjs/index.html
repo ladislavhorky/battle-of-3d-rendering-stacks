@@ -17,11 +17,11 @@
   <script>
 
 var terrainProvider = new Cesium.CesiumTerrainProvider({
-    url: "http://condrieu:8070/mapproxy/tms-global-geodetic/surface/terrain/viewfinder3/"
+    url: "//cdn.melown.com/vts/tms-global-geodetic/terrain/global/viewfinder3/"
 });
 
 var imageryProvider = new Cesium.UrlTemplateImageryProvider({
-    url: "http://condrieu:8070/mapproxy/tms-global-geodetic/tms/imagery/eox-it-sentinel2-cloudless/{lod}-{x}-{y}.jpg?r=1"
+    url: "//cdn.melown.com/vts/tms-global-geodetic/tms/imagery/eox-it-sentinel2-cloudless/{lod}-{x}-{y}.jpg"
     , maximumLevel: 13
     , tilingScheme: new Cesium.GeographicTilingScheme()
     , customTags: {
